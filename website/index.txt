@@ -1,0 +1,76 @@
+h1. Simple Hierarchical Clustering
+
+h1. &#x2192; 'hierclust'
+
+h2. What
+
+Given a set of points, organizes them into clusters. You can either have it continue clustering until all the clusters are organized into larger clusters, or tell it to stop once a certain minimum level of separation between clusters has been reached.
+
+Useful for taking a large set of points to be plotted on a map, and reducing them to a smaller number of clusters, separated enough so that the map remains legible.
+
+h2. Installing
+
+<pre syntax="ruby">sudo gem install hierclust</pre>
+
+h2. The basics
+
+<pre syntax="ruby">points = (1..6).map { Hierclust::Point.new(rand(10), rand(10)) }
+clusterer = Hierclust::Clusterer.new(points)
+puts clusterer.clusters # => [[[(4, 9), (4, 8)], (9, 6)], [[(1, 4), (3, 1)], (6, 3)]]</pre>
+
+h2. Demonstration of usage
+
+Let's say you have an existing set of objects with latitudes and longitudes, and you want to organize them into clusters that are separated by at least 5 degrees (for simplicity's sake we'll pretend that latitudes and longitude form a rectangular grid).
+
+<pre syntax="ruby">require 'hierclust'</pre>
+
+Start by extending the built-in Point class so that it can maintain a reference
+to your data:
+
+<pre syntax="ruby">class Hierclust::Point
+  attr_accessor :data
+end</pre>
+
+Then turn your data into a set of points:
+
+<pre syntax="ruby">dataset = MyGeocodedThing.find(:all)
+points = dataset.map do |thing|
+  point = Hierclust::Point.new(thing.lon, thing.lat)
+  point.data = thing
+  point
+end</pre>
+
+Then tell Hierclust to cluster those points to at least 5 degrees separation:
+
+<pre syntax="ruby">clusterer = Hierclust::Clusterer.new(points, 5)
+clusters = clusterer.clusters</pre>
+
+Then do what you will with your clusters:
+
+<pre syntax="ruby">map = MapThing.new
+clusters.each do |cluster|
+  map.add_point(
+    x => cluster.x,
+    y => cluster.y,
+    label => "#{cluster.size} Things"
+  )
+end</pre>
+
+h2. Forum
+
+"http://groups.google.com/group/hierclust":http://groups.google.com/group/hierclust
+
+h2. How to submit patches
+
+Read the "8 steps for fixing other people's code":http://drnicwilliams.com/2007/06/01/8-steps-for-fixing-other-peoples-code/ and for section "8b: Submit patch to Google Groups":http://drnicwilliams.com/2007/06/01/8-steps-for-fixing-other-peoples-code/#8b-google-groups, use the Google Group above.
+
+The trunk repository is <code>svn://rubyforge.org/var/svn/hierclust/trunk</code> for anonymous access.
+
+h2. License
+
+This code is free to use under the terms of the MIT license. 
+
+h2. Contact
+
+Comments are welcome. Send an email to "Brandt Kurowski":mailto:brandt@kurowski.net email via the "forum":http://groups.google.com/group/hierclust
+
