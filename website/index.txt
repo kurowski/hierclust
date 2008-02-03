@@ -56,6 +56,10 @@ clusters.each do |cluster|
   )
 end</pre>
 
+h2. Documentaion
+
+API documentation: "RDoc":rdoc/
+
 h2. Forum
 
 "http://groups.google.com/group/hierclust":http://groups.google.com/group/hierclust
