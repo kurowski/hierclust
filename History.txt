@@ -1,3 +1,10 @@
+== 0.1.1 2008-02-04
+
+* 1 minor enhancement:
+  * add method for returning flattened list of points in a cluster
+* 1 bugfix:
+  * correct intermittent failure of Clusterer spec
+
 == 0.1.0 2008-02-01
 
 * 1 major enhancement:

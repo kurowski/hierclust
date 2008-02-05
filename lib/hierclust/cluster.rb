@@ -29,8 +29,8 @@ module Hierclust
       @items.size
     end
     
-    # Returns the number of points contained in this cluster and the clusters
-    # it contains.
+    # Returns a flat list of all the points contained in either this cluster
+    # or any of the clusters it contains.
     def points
       @items.map {|item| item.points}.flatten
     end
