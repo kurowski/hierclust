@@ -39,6 +39,7 @@ module Hierclust
       @p_1 = Point.new(@x_1, @y_1)
       @p_2 = Point.new(@x_2, @y_2)
       @c = Cluster.new([@p_1, @p_2])
+      @points = @c.points
     end
 
     it "should have x-coordinate at average of point's x-coordinates" do
@@ -47,6 +48,14 @@ module Hierclust
 
     it "should have y-coordinate at average of point's y-coordinates" do
       @c.y.should == 6
+    end
+
+    it "should have two points" do
+      @points.size.should == 2
+    end
+
+    it "should include both points" do
+      @points.should include(@p_1, @p_2)
     end
   end
 end

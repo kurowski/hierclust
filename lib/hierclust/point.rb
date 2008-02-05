@@ -18,6 +18,11 @@ module Hierclust
       1
     end
     
+    # Simplifies code by letting us treat Clusters and Points interchangeably
+    def points #:nodoc:
+      self
+    end
+    
     # Returns a legible representation of this Point.
     def to_s
       "(#{x}, #{y})"
