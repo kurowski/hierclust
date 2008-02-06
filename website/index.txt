@@ -52,7 +52,7 @@ clusters.each do |cluster|
   map.add_point(
     x => cluster.x,
     y => cluster.y,
-    label => "#{cluster.size} Things"
+    label => "#{cluster.points} Things"
   )
 end</pre>
 
@@ -66,9 +66,7 @@ h2. Forum
 
 h2. Source code
 
-The trunk repository is <code>svn://rubyforge.org/var/svn/hierclust/trunk</code> for anonymous access.
-
-You can also browse the source online at "http://hierclust.rubyforge.org/svn/trunk/":http://hierclust.rubyforge.org/svn/trunk/
+You can browse the source at "http://hierclust.rubyforge.org/svn/trunk/":http://hierclust.rubyforge.org/svn/trunk/
 
 h2. How to submit patches
 
