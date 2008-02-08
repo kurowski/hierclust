@@ -12,7 +12,12 @@ module Hierclust
       @x = x
       @y = y
     end
-
+    
+    # Returns this distance from this Point to an +other+ Point.
+    def distance_to(other)
+      Math.sqrt((other.x - self.x) ** 2 + (other.y - self.y) ** 2)  
+    end
+    
     # Simplifies code by letting us treat Clusters and Points interchangeably
     def size #:nodoc:
       1
@@ -20,7 +25,7 @@ module Hierclust
     
     # Simplifies code by letting us treat Clusters and Points interchangeably
     def points #:nodoc:
-      self
+      [self]
     end
     
     # Returns a legible representation of this Point.
@@ -29,8 +34,17 @@ module Hierclust
     end
     
     # Sorts points relative to each other on the x-axis.
+    # 
+    # Uses y-axis as a tie-breaker, so that sorting is stable even if
+    # multiple points have the same x-coordinate.
+    # 
+    # Uses object_id as a final tie-breaker, so sorts are guaranteed to
+    # be stable even when multiple points have the same coordinates.
     def <=>(other)
-      return self.x <=> other.x
+      cmp = self.x <=> other.x
+      cmp = self.y <=> other.y if cmp == 0
+      cmp = self.object_id <=> other.object_id if cmp == 0
+      return cmp
     end
   end
 end

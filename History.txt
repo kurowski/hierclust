@@ -1,3 +1,10 @@
+== 0.1.2 2008-02-07
+
+* 1 performance improvement
+  * refactored Distances to be more intelligent about precalculated values
+* 1 bugfix:
+  * correct degenerate case of Hierclust::Point.points
+
 == 0.1.1 2008-02-04
 
 * 1 minor enhancement:

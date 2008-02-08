@@ -11,14 +11,6 @@ module Hierclust
       @dist = Math.sqrt((@x_1 - @x_2) ** 2 + (@y_1 - @y_2) ** 2)
     end
 
-    it "should tell us the distance between those points" do
-      @d[@p_1, @p_2].should == @dist
-    end
-
-    it "should tell us the distance between those points backwards" do
-      @d[@p_1, @p_2].should == @dist
-    end
-
     it "should have separation equal to distance between those points" do
       @d.separation.should == @dist
     end

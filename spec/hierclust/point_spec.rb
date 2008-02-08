@@ -6,7 +6,8 @@ module Hierclust
       @p = Point.new(1, 1)
     end
 
-    it "should return no clusters" do
+    it "should have points that is an array of only self" do
+      @p.points.should == [@p]
     end
   end
 end
