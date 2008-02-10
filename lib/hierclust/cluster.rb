@@ -24,6 +24,12 @@ module Hierclust
       @y ||= @items.inject(0) {|sum, p| sum + p.y} / size
     end
     
+    # Add an +item+ to this Cluster.
+    def <<(item)
+      @x, @y = nil, nil # flush cached pseudo-attributes
+      @items << item
+    end
+    
     # Returns the number of items in this Cluster.
     def size
       @items.size

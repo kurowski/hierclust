@@ -1,3 +1,11 @@
+== 0.1.3 2008-02-10
+
+* 1 performance improvement
+  * added linear-time preclustering based on minimum separation distance
+* 1 major change:
+  * when minimum separation is given, the clusterer will no longer calculate
+    and return clusters smaller than "separation / 2.0"
+
 == 0.1.2 2008-02-07
 
 * 1 performance improvement
