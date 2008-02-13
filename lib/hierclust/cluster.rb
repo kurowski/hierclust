@@ -15,13 +15,15 @@ module Hierclust
     # Returns the average x-coordinates of all items in this Cluster.
     def x
       return nil if size == 0
-      @x ||= @items.inject(0) {|sum, p| sum + p.x} / size
+      points = self.points
+      @x ||= points.inject(0.0) {|sum, p| sum + p.x} / points.size
     end
 
     # Returns the average y-coordinates of all items in this Cluster.
     def y
       return nil if size == 0
-      @y ||= @items.inject(0) {|sum, p| sum + p.y} / size
+      points = self.points
+      @y ||= points.inject(0.0) {|sum, p| sum + p.y} / points.size
     end
     
     # Add an +item+ to this Cluster.

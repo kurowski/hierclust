@@ -58,4 +58,32 @@ module Hierclust
       @points.should include(@p_1, @p_2)
     end
   end
+
+  describe Cluster, " with one point and one cluster" do
+    before do
+      @x_1, @x_2, @x_3 = 1, 2, 3
+      @y_1, @y_2, @y_3 = 2, 2, 5
+      @p_1 = Point.new(@x_1, @y_1)
+      @p_2 = Point.new(@x_2, @y_2)
+      @p_3 = Point.new(@x_3, @y_3)
+      @c_1 = Cluster.new([@p_1, @p_2])
+      @c_2 = Cluster.new([@p_3, @c_1])
+    end
+
+    it "should have two items" do
+      @c_2.items.size.should == 2
+    end
+
+    it "should have three points" do
+      @c_2.points.size.should == 3
+    end
+
+    it "should have x-coordinate at average of point's x-coordinates" do
+      @c_2.x.should == 2
+    end
+
+    it "should have y-coordinate at average of point's y-coordinates" do
+      @c_2.y.should == 3
+    end
+  end
 end

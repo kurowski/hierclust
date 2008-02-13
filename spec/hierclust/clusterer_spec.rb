@@ -164,18 +164,43 @@ module Hierclust
       end
 
       describe "and separation 3" do
-        before do
-          @clusters = Clusterer.new(@points, 3).clusters.sort
+        describe "with no resolution limit" do
+          before do
+            @clusters = Clusterer.new(@points, 3).clusters.sort
+          end
+
+          it "should have three clusters" do
+            @clusters.size.should == 3
+          end
+
+          it "should have clusters size 2, 2, and 4 " do
+            @clusters[0].points.size.should == 2
+            @clusters[1].points.size.should == 2
+            @clusters[2].points.size.should == 4
+          end
+
+          it "should have 2 items in large cluster" do
+            @clusters[2].items.size.should == 2
+          end
         end
 
-        it "should have three clusters" do
-          @clusters.size.should == 3
-        end
+        describe "with coarse resolution" do
+          before do
+            @clusters = Clusterer.new(@points, 3, 5).clusters.sort
+          end
 
-        it "should have clusters size 2, 2, and 4 " do
-          @clusters[0].points.size.should == 2
-          @clusters[1].points.size.should == 2
-          @clusters[2].points.size.should == 4
+          it "should have three clusters" do
+            @clusters.size.should == 2
+          end
+
+          it "should have clusters size 2, 2, and 4 " do
+            @clusters[0].points.size.should == 4
+            @clusters[1].points.size.should == 4
+          end
+
+          it "should have 4 items in large cluster" do
+            @clusters[1].items.size.should == 4
+          end
         end
       end
     end

@@ -1,3 +1,10 @@
+== 0.1.4 2008-02-13
+
+* 1 minor enhancement:
+  * gave linear-time preclustering an independent "resolution" parameter
+* 1 bugfix:
+  * corrected cluster coordinate calculation
+
 == 0.1.3 2008-02-10
 
 * 1 performance improvement
