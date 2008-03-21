@@ -37,6 +37,14 @@ module Hierclust
       @items.size
     end
     
+    # Returns the distance from the center of this Cluster to the edge.
+    def radius
+      return nil if @items.empty?
+      return 0 if @items.size == 1
+      return (@items[0].distance_to(@items[1]) + @items[0].radius + @items[1].radius) / 2.0
+      raise "radius not implemented for clusters with more than two items"
+    end
+    
     # Returns a flat list of all the points contained in either this cluster
     # or any of the clusters it contains.
     def points

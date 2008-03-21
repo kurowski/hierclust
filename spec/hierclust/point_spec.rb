@@ -14,5 +14,9 @@ module Hierclust
     it "should calculate distance to other" do
       @p.distance_to(@p2).should == 1.0
     end
+
+    it "should have zero radius" do
+      @p.radius.should == 0.0
+    end
   end
 end

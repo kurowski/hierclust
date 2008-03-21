@@ -13,6 +13,10 @@ module Hierclust
     it "should have nil y-coordinate" do
       @c.y.should be_nil
     end
+
+    it "should have nil radius" do
+      @c.radius.should be_nil
+    end
   end
 
   describe Cluster, " with one point" do
@@ -29,6 +33,10 @@ module Hierclust
 
     it "should have the same y-coordinate as the point" do
       @c.y.should == @p.y
+    end
+
+    it "should have 0 radius" do
+      @c.radius.should == 0
     end
   end
 
@@ -56,6 +64,11 @@ module Hierclust
 
     it "should include both points" do
       @points.should include(@p_1, @p_2)
+    end
+
+    it "should have correct radius" do
+      radius = Math.sqrt((@x_1 - @x_2) ** 2 + (@y_1 - @y_2) ** 2) / 2.0
+      @c.radius.should == radius
     end
   end
 

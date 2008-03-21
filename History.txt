@@ -1,3 +1,10 @@
+== 0.1.5 2008-03-21
+
+* 1 minor enhancement:
+  * added cluster radius
+* 1 new example script:
+  * demonstrates SVG rendering of points and clusters
+
 == 0.1.4 2008-02-13
 
 * 1 minor enhancement:

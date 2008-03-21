@@ -24,6 +24,11 @@ module Hierclust
     end
     
     # Simplifies code by letting us treat Clusters and Points interchangeably
+    def radius #:nodoc:
+      0
+    end
+    
+    # Simplifies code by letting us treat Clusters and Points interchangeably
     def points #:nodoc:
       [self]
     end
